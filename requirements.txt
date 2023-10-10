@@ -1,0 +1,8 @@
+selenium==4.14.0
+webdriver_manager
+pytest
+pytest-html
+pytest-parallel
+pytest-xdist
+urllib3==1.26.6
+flake8

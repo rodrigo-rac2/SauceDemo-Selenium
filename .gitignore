@@ -1,0 +1,15 @@
+.idea
+public/
+node_modules
+.DS_Store
+website_and_docs/.hugo_build.lock
+website_and_docs/resources
+
+**/target/*
+log
+.classpath
+.project
+.settings
+.pytest*
+.pydevproject
+venv
