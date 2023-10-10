@@ -74,7 +74,7 @@ class LoginPage:
     def get_error_text(self):
         """ Returns the text of the error message on the page, if one exists.
         Returns None otherwise. """
-        if self.error_message_exists():
+        if self.is_error_displayed():
             return self.driver.find_elements(
                 By.XPATH,
                 self.error_message_selector[1]
