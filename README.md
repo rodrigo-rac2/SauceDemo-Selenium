@@ -44,9 +44,31 @@ The project is structured as follows:
 
 ## Running Tests
 To run the tests, execute the following command from the root directory of the project:
-
+   
    ```bash
-    pytest
+   python -m pytest -c selenium_config.cfg
+   ```
+
+This config has reporting enabled. If you want to generate a report, run the tests with (the `log` directory isn't shared through git):
+    
+   ```bash
+   python -m pytest -c selenium_config.cfg --html=./log/report.html
+   ```
+
+You can also enable parallel execution by adding the `-n` flag:
+   
+   ```bash
+   python -m pytest -c selenium_config.cfg -n 2
+   ```
+
+Or you can run the tests using the `run_tests.sh` script:
+   ```bash
+    ./run_tests.sh
+   ```
+
+Feel free to check the selenium_config.cfg file and check for the markdowns, so you can run tagged tests such as:
+   ```bash
+    ./run_tests.sh login
    ```
 
 ## Results

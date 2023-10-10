@@ -22,10 +22,10 @@ from pages.login_page import LoginPage
 def test_login_valid_user(driver, browser, mode, device, user):
     """Test logging in with a valid username/password."""
     login_page = LoginPage(driver)
-    login_page.enter_username(user["username"])
-    login_page.enter_password(user["password"])
+    login_page.type_username(user["username"])
+    login_page.type_password(user["password"])
     login_page.click_login()
-    assert not login_page.error_message_exists()
+    assert not login_page.is_error_displayed()
     print("Test finished.")
 
 
@@ -42,8 +42,8 @@ def test_login_locked_out_user(driver, browser, mode, device, user):
     """Test logging in with a user who is locked out."""
     login_page = LoginPage(driver)
     login_page.login(user["username"], user["password"])
-    assert login_page.error_message_exists()
-    print(login_page.get_error_message_text())
+    assert login_page.is_error_displayed()
+    print(login_page.get_error_text())
     print("test_login_locked_out_user finished successfully.")
 
 
@@ -60,8 +60,8 @@ def test_login_incorrect_credentials(driver, browser, mode, device, user):
     """Test attempting to log in with invalid credentials."""
     login_page = LoginPage(driver)
     login_page.login(user["username"], user["password"])
-    assert login_page.error_message_exists()
-    print(login_page.get_error_message_text())
+    assert login_page.is_error_displayed()
+    print(login_page.get_error_text())
     print("test_login_incorrect_credentials finished successfully.")
 
 
@@ -79,8 +79,8 @@ def test_login_missing_username(
     """Test attempting to log in with a blank username."""
     login_page = LoginPage(driver)
     login_page.login(user["username"], user["password"])
-    assert login_page.error_message_exists()
-    print(login_page.get_error_message_text())
+    assert login_page.is_error_displayed()
+    print(login_page.get_error_text())
     print("test_login_missing_username finished successfully.")
 
 
@@ -98,6 +98,6 @@ def test_login_missing_password(
     """Test attempting to log in with a blank password."""
     login_page = LoginPage(driver)
     login_page.login(user["username"], user["password"])
-    assert login_page.error_message_exists()
-    print(login_page.get_error_message_text())
+    assert login_page.is_error_displayed()
+    print(login_page.get_error_text())
     print("test_login_missing_password finished successfully.")
