@@ -2,7 +2,7 @@
 # Author: Rodrigo Alves Costa
 # Date: Oct 10, 2023
 
-"""Constant variables used throughout the framework."""
+"""Constant variables used throughout the framework"""
 from enum import Enum
 from selenium import webdriver
 

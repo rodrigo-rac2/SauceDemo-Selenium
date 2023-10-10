@@ -10,6 +10,7 @@ from selenium.webdriver.common.by import By
 
 
 class LoginPage:
+    """Login page object"""
     def __init__(self, driver):
         self.driver = driver
         self.url = Constants.URL
@@ -64,18 +65,20 @@ class LoginPage:
     def error_message_exists(self):
         """ Returns true if an error message exists on the page,
         false otherwise. """
-        error_message = self.driver.find_elements("xpath",
-                                                  self.error_message_selector[1]
-                                                  )
+        error_message = self.driver.find_elements(
+            By.XPATH,
+            self.error_message_selector[1]
+        )
         return len(error_message) > 0
 
     def get_error_message_text(self):
         """ Returns the text of the error message on the page, if one exists.
         Returns None otherwise. """
         if self.error_message_exists():
-            return self.driver.find_elements("xpath",
-                                             self.error_message_selector[1]
-                                             )[0].text
+            return self.driver.find_elements(
+                By.XPATH,
+                self.error_message_selector[1]
+            )[0].text
         return None
 
     def login(self, username, password):
@@ -83,43 +86,3 @@ class LoginPage:
         self.enter_username(username)
         self.enter_password(password)
         self.click_login()
-
-# import pytest
-#
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from webdriver_manager.chrome import ChromeDriverManager
-#
-#
-# class LoginPage:
-#     def __init__(self, driver):
-#         self.driver = driver
-#         self.username_field = driver.find_element(By.ID, "user-name")
-#         self.password_field = driver.find_element(By.ID, "password")
-#         self.login_button = driver.find_element(By.ID, "login-button")
-#         self.error_message = driver.find_element(By.CSS_SELECTOR, ".error-message")
-#
-#     def login(self, username, password):
-#         self.username_field.clear()
-#         self.username_field.send_keys(username)
-#         self.password_field.clear()
-#         self.password_field.send_keys(password)
-#         self.login_button.click()
-#
-#     def get_error_message(self):
-#         return self.error_message.text
-#
-#
-# @pytest.fixture(scope="class")
-# def driver():
-#     # Initialize the WebDriver (you may need to specify the path to your WebDriver executable)
-#     driver = webdriver.Chrome(ChromeDriverManager().install())
-#     yield driver
-#     # Close the browser after all tests are finished
-#     driver.quit()
-#
-#
-# @pytest.fixture(autouse=True)
-# def navigate_to_login_page(driver):
-#     # Navigate to the website before each test
-#     driver.get("https://www.saucedemo.com/")

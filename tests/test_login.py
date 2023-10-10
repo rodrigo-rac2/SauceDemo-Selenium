@@ -2,9 +2,8 @@
 # Author: Rodrigo Alves Costa
 # Date: Oct 10, 2023
 
-# Rest of your code goes here
 
-"""Testing the login page of saucedemo.com"""
+"""This test file verifies the login page of saucedemo.com"""
 import pytest
 import lib.login_credentials as LoginCreds
 from lib.constants import CHROME_MOBILE, CHROME_HEADLESS
@@ -48,13 +47,12 @@ def test_login_locked_out_user(driver, browser, mode, device, user):
     print("test_login_locked_out_user finished successfully.")
 
 
-
 @pytest.mark.parametrize(
     "browser, mode, device, user",
     [
         (*CHROME_MOBILE, LoginCreds.INVALID_USER),
         (*CHROME_HEADLESS, LoginCreds.SQL_INJECTION_USER),
-    ],
+    ]
 )
 @pytest.mark.login
 @pytest.mark.login_incorrect

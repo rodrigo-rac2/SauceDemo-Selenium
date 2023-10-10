@@ -1,5 +1,8 @@
-#!/usr/bin/env python
-"""Test configuration for pytest"""
+# Python Version: 3.9.6
+# Author: Rodrigo Alves Costa
+# Date: Oct 10, 2023
+
+"""Test configuration for pytest."""
 import time
 import pytest
 
@@ -18,7 +21,7 @@ def driver(request, browser, mode, device):
                 "mobileEmulation", mobile_emulation
             )
             web_driver = webdriver.Chrome(options=options)
-        if mode == Mode.HEADLESS:
+        elif mode == Mode.HEADLESS:
             options = webdriver.ChromeOptions()
             options.add_argument("--headless")
             web_driver = webdriver.Chrome(options=options)
