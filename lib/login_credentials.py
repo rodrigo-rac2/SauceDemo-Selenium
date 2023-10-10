@@ -2,7 +2,7 @@
 # Author: Rodrigo Alves Costa
 # Date: Oct 10, 2023
 
-""" Constants for login credentials """
+"""Constants for login credentials"""
 STANDARD_USER = {
     "username": "standard_user",
     "password": "secret_sauce",

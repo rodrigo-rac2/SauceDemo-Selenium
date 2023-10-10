@@ -2,7 +2,7 @@
 
 This project demonstrates automated tests for the login/logout functionality of [www.saucedemo.com](https://www.saucedemo.com/). The tests cover both positive and negative cases to provide an optimal level of coverage. This task is part of an interview process and should be completed within 1.5 hours.
 
-This project was developed using Python 3.9.5.
+This project was developed using Python 3.9.6.
 
 ## Table of Contents
 
