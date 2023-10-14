@@ -6,7 +6,7 @@
 """This test file verifies the login page of saucedemo.com"""
 import pytest
 import lib.login_credentials as LoginCreds
-from lib.constants import CHROME_MOBILE, CHROME_HEADLESS
+from lib.constants import CHROME_MOBILE, CHROME_HEADLESS, FIREFOX_HEADLESS
 from pages.login_page import LoginPage
 
 
@@ -15,6 +15,7 @@ from pages.login_page import LoginPage
     [
         (*CHROME_MOBILE, LoginCreds.STANDARD_USER),
         (*CHROME_HEADLESS, LoginCreds.STANDARD_USER),
+        (*FIREFOX_HEADLESS, LoginCreds.STANDARD_USER),
     ],
 )
 @pytest.mark.login
@@ -34,6 +35,7 @@ def test_login_valid_user(driver, browser, mode, device, user):
     [
         (*CHROME_MOBILE, LoginCreds.LOCKED_OUT_USER),
         (*CHROME_HEADLESS, LoginCreds.LOCKED_OUT_USER),
+        (*FIREFOX_HEADLESS, LoginCreds.LOCKED_OUT_USER)
     ],
 )
 @pytest.mark.login
@@ -52,6 +54,7 @@ def test_login_locked_out_user(driver, browser, mode, device, user):
     [
         (*CHROME_MOBILE, LoginCreds.INVALID_USER),
         (*CHROME_HEADLESS, LoginCreds.SQL_INJECTION_USER),
+        (*FIREFOX_HEADLESS, LoginCreds.INVALID_USER),
     ]
 )
 @pytest.mark.login
@@ -70,6 +73,7 @@ def test_login_incorrect_credentials(driver, browser, mode, device, user):
     [
         (*CHROME_MOBILE, LoginCreds.EMPTY_USERNAME),
         (*CHROME_HEADLESS, LoginCreds.EMPTY_USERNAME),
+        (*FIREFOX_HEADLESS, LoginCreds.EMPTY_USERNAME)
     ],
 )
 @pytest.mark.login
@@ -89,6 +93,7 @@ def test_login_missing_username(
     [
         (*CHROME_MOBILE, LoginCreds.EMPTY_PASSWORD),
         (*CHROME_HEADLESS, LoginCreds.EMPTY_PASSWORD),
+        (*FIREFOX_HEADLESS, LoginCreds.EMPTY_PASSWORD),
     ],
 )
 @pytest.mark.login

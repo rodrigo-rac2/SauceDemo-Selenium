@@ -14,19 +14,27 @@ from lib.constants import Mode
 def driver(request, browser, mode, device):
     """Creates test fixtures for pytest."""
     if browser == webdriver.Chrome:
+        options = webdriver.ChromeOptions()
         if mode == Mode.MOBILE:
-            options = webdriver.ChromeOptions()
             mobile_emulation = {"deviceName": device}
             options.add_experimental_option(
                 "mobileEmulation", mobile_emulation
             )
-            web_driver = webdriver.Chrome(options=options)
-        elif mode == Mode.HEADLESS:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            web_driver = webdriver.Chrome(options=options)
+            options.set_capability("browserName", "iPhone")
         else:
-            web_driver = webdriver.Chrome()
+            options.set_capability("browserName", "chrome")
+
+        web_driver = webdriver.Remote(
+            command_executor='http://localhost:4444',
+            options=options
+        )
+    elif browser == webdriver.Firefox:
+        options = webdriver.FirefoxOptions()
+        options.set_capability("browserName", "firefox")
+        web_driver = webdriver.Remote(
+            command_executor='http://localhost:4444',
+            options=options
+        )
     else:
         raise NameError("Unsupported browser: %s" % browser)
 

@@ -21,6 +21,7 @@ IPHONE_X = "iPhone X"
 CHROME_MOBILE = (webdriver.Chrome, Mode.MOBILE, IPHONE_X)
 CHROME_DESKTOP = (webdriver.Chrome, Mode.DESKTOP, None)
 CHROME_HEADLESS = (webdriver.Chrome, Mode.HEADLESS, None)
+FIREFOX_HEADLESS = (webdriver.Firefox, Mode.HEADLESS, None)
 DEFAULT = CHROME_HEADLESS
 
 # URL
